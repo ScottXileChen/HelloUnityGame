@@ -77,15 +77,6 @@ jobs:
           name: Deploy if tests pass and branch is Staging
           command: ansible-playbook site.yml -i staging
 
-  deploy-prod:
-    docker:
-      - image: ubuntu:14.04
-    working_directory: /tmp/my-project
-    steps:
-      - run:
-          name: Deploy if tests pass and branch is Master
-          command: ansible-playbook site.yml -i production
-
 workflows:
   version: 2
   build-deploy:
