@@ -33,11 +33,6 @@ jobs:
           sudo -u root createuser -h localhost --superuser ubuntu &&
           sudo createdb -h localhost test_db
 
-      - restore_cache:
-          keys:
-            - v1-my-project-{{ checksum "project.clj" }}
-            - v1-my-project-
-
       - run:
           environment:
             SSH_TARGET: "localhost"
