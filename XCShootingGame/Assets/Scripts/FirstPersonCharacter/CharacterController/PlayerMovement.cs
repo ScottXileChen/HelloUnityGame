@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
     private float _groundDistance;
     public Transform _groundCheck;
-    public LayerMask _groundMask;
 
     public bool IsGrounded { get => _isGrounded; private set => _isGrounded = value; }
     public Vector3 Move { get => _move; private set => _move = value; }
@@ -36,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);
+        IsGrounded = _characterController.isGrounded;
 
         if (IsGrounded && _velocity.y < 0)
         {

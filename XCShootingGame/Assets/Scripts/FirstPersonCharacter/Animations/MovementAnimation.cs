@@ -15,6 +15,6 @@ public class MovementAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _animator.SetFloat("WalkingSpeed", Input.GetAxis("Vertical"));
+        _animator.SetFloat("WalkingSpeed", Mathf.Abs(Input.GetAxis("Vertical") + Input.GetAxis("Horizontal")));
     }
 }
