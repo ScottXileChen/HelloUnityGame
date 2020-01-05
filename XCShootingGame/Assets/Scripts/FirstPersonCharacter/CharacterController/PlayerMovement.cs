@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _moveSpeed;
     private Vector3 _move;
+    private bool _isMoving;
+
+    [SerializeField]
+    private float _runSpeed;
+    private bool _isRunning;
 
     [SerializeField]
     private float _jumpHeight;
@@ -17,11 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     private Vector3 _velocity;
 
-    private float _groundDistance;
-    public Transform _groundCheck;
-
     public bool IsGrounded { get => _isGrounded; private set => _isGrounded = value; }
     public Vector3 Move { get => _move; private set => _move = value; }
+    public bool IsRunning { get => _isRunning; private set => _isRunning = value; }
+    public bool IsMoving { get => _isMoving; private set => _isMoving = value; }
 
     void Start()
     {
@@ -29,30 +33,64 @@ public class PlayerMovement : MonoBehaviour
         Move = Vector3.zero;
         _gravity = -9.8f;
         _velocity = Vector3.zero;
-        _groundDistance = 0.4f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Check is grounded
         IsGrounded = _characterController.isGrounded;
 
+        // Reset y value of velocity when is grounded
         if (IsGrounded && _velocity.y < 0)
         {
             _velocity.y = -2f;
         }
 
+        // Get input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Move = transform.right * horizontal + transform.forward * vertical;
-        _characterController.Move(Move * _moveSpeed * Time.deltaTime);
+        // Get running input and set is running
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            IsRunning = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            IsRunning = false;
+        }
 
+        // Set move direction
+        Move = transform.right * horizontal + transform.forward * vertical;
+
+        // Check is moving
+        if (Move.magnitude != 0)
+        {
+            IsMoving = true;
+        }
+        else
+        {
+            IsMoving = false;
+        }
+
+        // Character movement
+        if(IsRunning)
+        {
+            _characterController.Move(Move * _runSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _characterController.Move(Move * _moveSpeed * Time.deltaTime);
+        }
+
+        // Get jump input and set jump height
         if (Input.GetButtonDown("Jump") && IsGrounded)
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
         }
 
+        // Update y value of velocity and make character jump
         _velocity.y += _gravity * Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
     }
