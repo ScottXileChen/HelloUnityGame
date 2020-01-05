@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 290794247}
   - component: {fileID: 290794248}
   - component: {fileID: 290794249}
+  - component: {fileID: 290794250}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: Player
@@ -188,6 +189,18 @@ MonoBehaviour:
   _moveSpeed: 5
   _runSpeed: 10
   _jumpHeight: 1.2
+--- !u!114 &290794250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290794246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d25809cb691d224aab3e5f6f7530424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &537863066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4763496373355348, guid: 158d85eb32c87104cb328b5f2e3ab9a1,
@@ -709,6 +722,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 143061266a15d244981f87d43ee80449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1903076236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903076233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb85417bd0510b14c8d286cce6294465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1995558810 stripped

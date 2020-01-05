@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MovementAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Animator _animator;
     private PlayerMovement _playerMovement;
 
+    // Start is called before the first frame update
     void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
