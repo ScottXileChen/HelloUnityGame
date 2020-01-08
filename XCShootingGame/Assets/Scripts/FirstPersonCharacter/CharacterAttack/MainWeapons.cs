@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Melees : Weapons
+public abstract class MainWeapons : Weapons
 {
     public abstract void Attack();
 }

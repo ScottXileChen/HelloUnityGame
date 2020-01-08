@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : Melees
+public class Rifle : MainWeapons
 {
-    public Axe()
+    public Rifle()
     {
-        WeaponObject = GameObject.Find("Hands_Axe");
+        WeaponObject = GameObject.Find("Hands_Automatic_rifle");
         WeaponObject.SetActive(false);
     }
 
     public override void Attack()
     {
-        
+
     }
 }

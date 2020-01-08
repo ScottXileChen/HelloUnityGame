@@ -18,5 +18,9 @@ public class AttackAnimation : MonoBehaviour
     {
         bool isAttacking = _playerAttack.IsAttacking;
         _animator.SetBool("IsAttacking", isAttacking);
+        bool isReloading = _playerAttack.IsReloading;
+        _animator.SetBool("IsReloading", isReloading);
+        bool isAiming = _playerAttack.IsAiming;
+        _animator.SetBool("IsAiming", isAiming);
     }
 }

@@ -8,6 +8,4 @@ public abstract class Weapons : MonoBehaviour
     private GameObject weaponObject;
 
     public GameObject WeaponObject { get => weaponObject; set => weaponObject = value; }
-
-    public abstract void Update();
 }
