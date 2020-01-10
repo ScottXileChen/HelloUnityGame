@@ -73,11 +73,13 @@ public class PlayerAttack : MonoBehaviour
                     _currentWeapon.WeaponObject.SetActive(false);
                     _currentWeapon = _mainWeapon;
                     _currentWeapon.WeaponObject.SetActive(true);
+                    _weaponSwitch = !_weaponSwitch;
                     break;
                 case 1:
                     _currentWeapon.WeaponObject.SetActive(false);
                     _currentWeapon = _meleeWeapon;
                     _currentWeapon.WeaponObject.SetActive(true);
+                    _weaponSwitch = !_weaponSwitch;
                     break;
                 default:
                     break;
@@ -88,6 +90,22 @@ public class PlayerAttack : MonoBehaviour
         {
             _weaponOptionIndex = 1;
             _weaponSwitch = true;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            _weaponOptionIndex = (_weaponOptionIndex + 1) % _weaponNum;
+            _weaponSwitch = true;
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            _weaponOptionIndex = (_weaponOptionIndex - 1) % _weaponNum;
+            _weaponSwitch = true;
+        }
+
+        if (_weaponOptionIndex < 0)
+        {
+            _weaponOptionIndex = _weaponNum - 1;
         }
     }
 }
